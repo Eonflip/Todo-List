@@ -1,7 +1,7 @@
 function createElement({ tag, className = '', src = '', content = '', parent, attributes = {} }) {
     const element = document.createElement(tag);
     if (className) {
-        element.classList.add(className);
+        className.split(' ').forEach(cls => element.classList.add(cls));
     }
     if (src) {
         element.src = src;
