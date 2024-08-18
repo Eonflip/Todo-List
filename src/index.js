@@ -15,6 +15,12 @@ const menuButton = createElement({
     parent: header,
 });
 
+const headerDiv = createElement({
+    tag: 'div',
+    className: 'header-div',
+    parent: header,
+});
+
 createElement({
     tag: 'i',
     className: 'fa-solid fa-bars',
@@ -25,8 +31,14 @@ createElement({
     tag: 'h1',
     className: 'app-title',
     content: 'Todoloo',
-    parent: header
+    parent: headerDiv
 });
+
+createElement({
+    tag: 'div',
+    className: 'spacer-div',
+    parent: header
+})
 
 const sidebar = createElement({
     tag: 'aside',
