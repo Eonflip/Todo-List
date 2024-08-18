@@ -16,7 +16,7 @@ body {
     flex-direction: column;
     min-height: 100%;
     width: 100%;
-    transition: margin-left 0.3s ease-in-out;
+    transition: margin-left 0.1s ease-in-out;
 }
 
 #content {
@@ -31,13 +31,12 @@ main {
 }
 
 .sidebar {
-    width: 0;
     background-color: tan;
     position: fixed;
     left: -250px; // Start off-screen
     top: 0;
     bottom: 0;
-    transition: left 0.3s ease-in-out;
+    transition: left 0.1s ease-in-out;
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto;
@@ -48,7 +47,7 @@ main {
 }
 
 body.sidebar-active #page-wrapper {
-    margin-left: 250px;
+    margin-left: 200px;
 }
 
 .sidebar-title {
@@ -70,11 +69,3 @@ body.sidebar-active #page-wrapper {
 }
 
 
-.menu-button {
-    background: none;
-    border: none;
-    color: white;
-    font-size: 24px;
-    cursor: pointer;
-    margin-right: 20px;
-}

@@ -12,11 +12,9 @@ header {
     padding: $header-padding;
     display: flex;
     align-items: center;
-    justify-content: center;
+    transition: padding-left 0.3s ease-in-out;
 }
     .menu-button {
-        position: absolute;
-        left: 5px;
         background: none;
         border: none;
         color: white;
@@ -25,11 +23,23 @@ header {
         margin-right: 20px;
     }
 
-    .app-title {
-        text-align: center;
-        font-size: 38px;
-        margin: 0;
-        background-color: $app-logo-background-color;
-        padding: 10px;
-        border-radius: 10px;
+    .header-div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-grow: 1;
+
+    }
+
+        .app-title {
+            text-align: center;
+            font-size: 38px;
+            margin: 0;
+            background-color: $app-logo-background-color;
+            padding: 10px;
+            border-radius: 10px;
+        }
+
+    .spacer-div {
+        margin-left: 60px;
     }
