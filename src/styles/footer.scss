@@ -1,0 +1,13 @@
+$footer-background-color: #466656;
+$footer-padding: 10px;
+
+footer {
+    background-color: $footer-background-color;
+    padding: $footer-padding;
+    display: flex;
+    justify-content: center;
+}
+.footer-info{ 
+    text-align: center;
+    color: white;
+}

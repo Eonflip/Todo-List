@@ -1,1 +1,80 @@
 @import 'header';
+@import 'footer';
+
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+body {
+    display: flex;
+}
+
+#page-wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    width: 100%;
+    transition: margin-left 0.3s ease-in-out;
+}
+
+#content {
+    display: flex;
+    flex: 1;
+}
+
+main {
+    flex: 1;
+    padding: 20px;
+    background-color: #685270;
+}
+
+.sidebar {
+    width: 0;
+    background-color: tan;
+    position: fixed;
+    left: -250px; // Start off-screen
+    top: 0;
+    bottom: 0;
+    transition: left 0.3s ease-in-out;
+    padding: 20px;
+    box-sizing: border-box;
+    overflow-y: auto;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+body.sidebar-active #page-wrapper {
+    margin-left: 250px;
+}
+
+.sidebar-title {
+    margin-top: 0;
+}
+
+.sidebar-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar-item {
+    padding: 10px 0;
+    cursor: pointer;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+
+.menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    margin-right: 20px;
+}
