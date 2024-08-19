@@ -49,24 +49,43 @@ const sidebar = createElement({
 createElement({
     tag: 'h2',
     className: 'sidebar-title',
-    content: 'Sidebar Content',
+    content: 'Projects',
     parent: sidebar
 });
 
-const sidebarItems = ['Home', 'Projects', 'Tasks', 'Settings'];
 const sidebarList = createElement({
     tag: 'ul',
     className: 'sidebar-list',
     parent: sidebar
 });
 
-sidebarItems.forEach(item => {
-    createElement({
-        tag: 'li',
-        className: 'sidebar-item',
-        content: item,
-        parent: sidebarList
-    })
+
+const newProject = createElement({
+    tag: "button",
+    className: 'new-project-button',
+    parent: sidebar
+});
+
+const newProjectText = createElement({
+    tag: 'p',
+    content: 'New Project ',
+    className: 'new-project-text',
+    parent: newProject
+})
+
+const newProjectIcon = createElement({
+    tag: 'i',
+    className: 'fa-solid fa-plus',
+    parent: newProject
+});
+
+
+
+createElement({
+    tag: 'li',
+    className: 'sidebar-item',
+    content: 'Default',
+    parent: sidebarList
 })
 
 createElement({
