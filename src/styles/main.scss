@@ -31,7 +31,7 @@ main {
 }
 
 .sidebar {
-    background-color: tan;
+    background-color: rgba(183, 156, 120, 0.895);
     position: fixed;
     left: -250px; // Start off-screen
     top: 0;
@@ -44,6 +44,7 @@ main {
 
 .sidebar.active {
     left: 0;
+    padding: 20px 74px 0px 10px;
 }
 
 body.sidebar-active #page-wrapper {
@@ -52,6 +53,7 @@ body.sidebar-active #page-wrapper {
 
 .sidebar-title {
     margin-top: 0;
+    padding: 10px;
 }
 
 .sidebar-list {
@@ -60,12 +62,29 @@ body.sidebar-active #page-wrapper {
 }
 
 .sidebar-item {
-    padding: 10px 0;
+    padding: 10px;
     cursor: pointer;
+    border-radius: 3px;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.1);
     }
 }
 
+.new-project-button {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0px 10px 0px 10px;
+    border-radius: 3px;
 
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+    }
+}
+
+.new-project-text {
+    margin-right: 10px;
+}
