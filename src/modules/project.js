@@ -6,6 +6,30 @@ export default class Project {
     }
 
     appendTask(task) {
-        tasklist.push(task);
+        this.tasklist.push(task);
+    }
+
+    removeTask(task) {
+        if (this.tasklist.includes(task)) {
+            let index = this.tasklist.indexOf(task);
+            this.tasklist.splice(index, 1);
+        }
+        else {
+            return null;
+        }
+    }
+
+    getTask(task) {
+        if (this.tasklist.includes(task)) {
+            let index = this.tasklist.indexOf(task);
+            return this.tasklist[index];
+        } 
+        else {
+            return null;
+        }
+    }
+
+    getTasks() {
+        return this.tasklist
     }
 }
