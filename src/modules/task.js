@@ -43,7 +43,7 @@ export default class Task {
         this.description = description;
     }
 
-    getDetails(description) {
+    getDetails() {
         return this.description;
     }
 
