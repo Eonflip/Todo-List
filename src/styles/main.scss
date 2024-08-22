@@ -1,0 +1,26 @@
+$background-color: rgb(72, 94, 72);
+
+* {
+    margin: 0;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.header-title {
+    background-color: rgb(72, 94, 72);
+    padding: 10px;
+    text-align: center;
+    color: white;
+    width: 100%;
+}
+
+.footer-content {
+    background-color: $background-color;
+}
+
+.menu-button {
+    width: 20px;
+}
