@@ -1,7 +1,6 @@
 import Task from './task'
 import Project from './project'
 import ProjectList from './project-list'
-import 'emoji-picker-element'
 import '../Styles/main.scss'
 
 const header = document.getElementById('header');
@@ -11,10 +10,13 @@ const main = document.getElementById('main');
 const footer = document.getElementById('footer');
 const pageWrapper = document.getElementById('page-wrapper');
 
+function createUI() {
+
+
+
 
 // Create Header
 
-function createHeader() {
     // Create Menu Button
     const menuButton = document.createElement('button');
     menuButton.classList.add('menu-button');
@@ -35,26 +37,38 @@ function createHeader() {
     menuButton.addEventListener('click', () => {
 
     });
-}
 
 
 //Create Footer
 
-function createFooter() {
     const footerText = document.createElement('h3');
-    footerText.textContent = "Ian Jones Copyright " + new Date().getFullYear();
+    footerText.textContent = "Ian Jones Copyright© " + new Date().getFullYear();
     footerText.classList.add('footer-content');
     footer.appendChild(footerText);
-}
+
+    const footerGithubLink = document.createElement('a');
+    footerGithubLink.setAttribute('href', 'https://github.com/Eonflip');
+    footerGithubLink.setAttribute('target', '_blank');
+    footerGithubLink.classList.add('github-link');
+
+    const footerGithubImage = document.createElement('i');
+    footerGithubImage.classList.add('fa-brands', 'fa-github', 'github-image');
+
+    footer.appendChild(footerGithubLink);
+    footerGithubLink.appendChild(footerGithubImage);
 
 
 // Create Modal
-function createModal() {
+
+    // Create modal
+    const modal = document.createElement('div');
+    modal.classList.add('modal');
+    content.appendChild(modal);
 
     // Create modal container
     const modalContainer = document.createElement('div');
     modalContainer.classList.add('modal-container');
-    content.appendChild(modalContainer);
+    modal.appendChild(modalContainer);
 
 
     // Modal title
@@ -101,13 +115,13 @@ function createModal() {
     cancelButton.textContent = 'Cancel';
     buttonContainer.appendChild(cancelButton);
 
-}
+    cancelButton.addEventListener('click', () => {
+        modal.style.display = 'none';
+    });
 
 
 
 // Create Sidebar
-
-function createSidebar() {
 
 
     // Create sidebar title
@@ -137,19 +151,11 @@ function createSidebar() {
     addProject.textContent = "+ Add Project";
     sidebarList.appendChild(addProject);
 
-
-
-    
+    addProject.addEventListener('click', () => {
+        modal.style.display = 'block';
+    });
 }
 
 
-// CreateUI Export Function
-
-function createUI() {
-    createHeader();
-    createModal();
-    createFooter();
-    createSidebar();
-}
 
 export default createUI;
