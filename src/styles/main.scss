@@ -43,6 +43,7 @@ header {
 footer {
     display: flex;
     justify-content: center;
+    align-items: center;
     background-color: $header-color;
     color: white;
     position: absolute;
@@ -123,10 +124,23 @@ footer {
     }
 }
 
+.modal {
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: solid black 2px;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(255, 255, 255, 0.466);
+    z-index: 100;
+}
 
 .modal-container {
-    width: 20%;
-    height: 20%;
+    width: 30%;
+    height: 30%;
     border: solid black 2px;
     padding: 10px;
     position: fixed;
@@ -146,12 +160,46 @@ footer {
     margin-bottom: 20px;
 }
 
+.modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    border: 2px solid black;
+}
+
+.modal-form label,
+.modal-form input {
+    width: 80%;
+    margin-bottom: 10px;
+}
+
 .submit-button {
     padding: 5px;
     margin-right: 10px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 .cancel-button {
     padding: 5px;
     margin-right: 10px;
+    background-color: rgb(233, 164, 164);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.github-link {
+    margin-left: 10px;
+}
+
+.github-image {
+    font-size: 24px;
+    color: white;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
 }
