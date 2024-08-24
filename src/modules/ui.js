@@ -242,19 +242,64 @@ class TodolooApp {
             event.preventDefault();
         });
 
+        // Task Name Input
+        const taskNameContainer = document.createElement('div');
+        taskNameContainer.classList.add('task-name-container');
+
         const taskNameLabel = document.createElement('label');
         taskNameLabel.setAttribute('for', 'name');
         taskNameLabel.textContent = 'Task Name: ';
+        taskNameLabel.classList.add('task-name-label');
         const taskNameInput = document.createElement('input');
         taskNameInput.setAttribute('type', 'text');
         taskNameInput.setAttribute('id', 'name');
         taskNameInput.setAttribute('name', 'name');
         taskNameInput.setAttribute('placeholder', 'Task Name');
 
-        taskModalForm.appendChild(taskNameLabel);
-        taskModalForm.appendChild(taskNameInput);
+        taskNameContainer.appendChild(taskNameLabel);
+        taskNameContainer.appendChild(taskNameInput);
+        taskModalForm.appendChild(taskNameContainer);
         taskModalForm.appendChild(document.createElement('br'));
         taskModalForm.appendChild(document.createElement('br'));
+
+        // Task Priority Input
+        const taskPriorityLabel = document.createElement('label');
+        taskPriorityLabel.setAttribute('for', 'priority');
+        taskPriorityLabel.textContent = 'Priority Level: ';
+        taskPriorityLabel.classList.add('task-priority-label');
+        const taskPriorityInput = document.createElement('select');
+        taskPriorityInput.classList.add('task-priority');
+        taskPriorityInput.setAttribute('id', 'priority');
+        taskPriorityInput.setAttribute('name', 'priority');
+        taskPriorityInput.setAttribute('placeholder', 'Low');
+        const lowPriority = document.createElement('option');
+        lowPriority.textContent = 'Low';
+        taskPriorityInput.appendChild(lowPriority);
+        const medPriority = document.createElement('option');
+        medPriority.textContent = 'Medium';
+        taskPriorityInput.appendChild(medPriority);
+        const highPriority = document.createElement('option');
+        highPriority.textContent = 'High';
+        taskPriorityInput.appendChild(highPriority);
+
+        taskModalForm.appendChild(taskPriorityLabel);
+        taskPriorityLabel.appendChild(taskPriorityInput);
+        taskModalForm.appendChild(document.createElement('br'));
+        taskModalForm.appendChild(document.createElement('br'));
+
+        // Task due date input
+        const taskDateLabel = document.createElement('label');
+        taskDateLabel.setAttribute('for', 'date');
+        taskDateLabel.textContent = 'Due Date: '
+        taskDateLabel.classList.add('task-date-label');
+        const taskDateInput = document.createElement('input');
+        taskDateInput.setAttribute('type', 'date');
+        taskDateInput.setAttribute('id', 'date');
+        taskDateInput.setAttribute('name', 'date');
+        taskDateInput.classList.add('task-date-input');
+
+        taskModalForm.appendChild(taskDateLabel);
+        taskDateLabel.appendChild(taskDateInput);
 
         const taskButtonContainer = document.createElement('div');
         taskButtonContainer.classList.add('task-button-container');
