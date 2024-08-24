@@ -1,3 +1,3 @@
 import createUI from './modules/ui'
 
-createUI();
+new createUI();
