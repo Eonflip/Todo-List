@@ -1,0 +1,150 @@
+.tasklist-container {
+    position: relative; /* Changed from absolute */
+    height: 700px;
+    width: 900px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: lightblue;
+    margin: auto; /* Centers the container horizontally */
+    z-index: 0;
+}
+
+
+.task-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.task-modal-container {
+    border: solid black 2px;
+    padding: 10px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(178, 173, 250);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    max-width: 700px;
+    max-height: 90vh;
+    width: 500px;
+    height: 300px;
+    overflow: hidden;
+}
+
+.task-modal-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.task-modal-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.task-modal-form label,
+.task-modal-form input {
+    width: 50%;
+    margin-bottom: 0px;
+}
+
+.task-name-container {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+.task-name-label {
+    width: auto;
+    margin-right: 0;
+    margin-left: 40px;
+    white-space: nowrap;
+}
+
+.task-name-input {
+    flex-grow: 1;
+    margin-left: 0;
+}
+
+.task-priority-container {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.task-priority {
+    padding: 3px;
+    margin-left: 50px;
+}
+
+.task-priority-label {
+    margin-left: 40px;
+}
+
+.task-date-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task-date-label {
+    margin-left: 40px;
+    margin-top: 0px;
+    margin-right: 40px
+}
+
+.task-date-input {
+    margin-left: 40px;
+}
+
+
+.task-submit-button {
+    padding: 5px;
+    margin-right: 10px;
+    background-color: lightgreen;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.task-cancel-button {
+    padding: 5px;
+    margin-right: 10px;
+    background-color: rgb(233, 164, 164);
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+
+.tasklist-container {
+    position: relative;
+    height: 600px;
+    width: 900px;
+    left: 0;
+    top: 0;
+    /*transform: translate(-50%, -50%);*/
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: lightblue;
+    margin-top: 40px;
+    z-index: 0;
+}

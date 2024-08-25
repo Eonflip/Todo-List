@@ -1,0 +1,29 @@
+footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $header-color;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0px;
+    padding: 20px;
+    z-index: 2;
+}
+
+.footer-content {
+    background-color: $header-color;
+}
+
+.github-link {
+    margin-left: 10px;
+}
+
+.github-image {
+    font-size: 24px;
+    color: white;
+
+    &:hover {
+        transform: rotate(180deg);
+    }
+}

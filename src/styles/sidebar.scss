@@ -1,0 +1,59 @@
+
+
+.sidebar {
+    height: calc(100% - 16%);
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 8%;
+    left: 0;
+    background-color: rgb(135, 134, 209);
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidebarTitle {
+    text-align: center;
+}
+
+.sidebar-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sidebar-item {
+    margin: 10px 0px;
+    list-style: none;
+    padding: 5px 0;
+    gap: 5px;
+    text-align: center;
+    border-radius: 5px;
+    width: 80%;
+    font-weight: bold;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+}
+
+
+.add-project {
+    margin-left: 15px;
+    margin-top: 10px;
+    padding: 5px 0;
+    gap: 5px;
+    text-align: center;
+    border-radius: 5px;
+    width: 80%;
+    background: none;
+    border: none;
+    font-weight: bold;
+
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+    }
+}

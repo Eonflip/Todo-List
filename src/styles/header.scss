@@ -1,0 +1,33 @@
+$header-color: rgb(72, 94, 72);
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $header-color;
+    padding: 20px 5px;
+    position: fixed;
+    width: 100%;
+    z-index: 2;
+}
+
+.header-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: tan;
+    border-radius: 10px;
+    padding: 5px 20px;
+}
+
+.menu-button {
+    width: 40px;
+    color: white;
+    background: none;
+    border: none;
+    font-size: 22px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
