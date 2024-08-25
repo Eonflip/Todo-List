@@ -310,6 +310,27 @@ class TodolooApp {
         taskDateContainer.appendChild(taskDateLabel);
         taskDateContainer.appendChild(taskDateInput);
 
+        //Task details box
+        const taskDetailsContainer = document.createElement('div');
+        taskDetailsContainer.classList.add('task-details-container');
+
+        const taskDetailsLabel = document.createElement('label');
+        taskDetailsLabel.setAttribute('for', 'date');
+        taskDetailsLabel.textContent = 'Description: '
+        taskDetailsLabel.classList.add('task-details-label');
+        const taskDetailsInput = document.createElement('textarea');
+        taskDetailsInput.setAttribute('placeholder', 'Enter your task description here');
+        taskDetailsInput.setAttribute('id', 'details');
+        taskDetailsInput.setAttribute('name', 'details');
+        taskDetailsInput.classList.add('task-details-input');
+
+        taskModalForm.appendChild(taskDetailsContainer);
+        taskDetailsContainer.appendChild(taskDetailsLabel);
+        taskDetailsContainer.appendChild(taskDetailsInput);
+
+
+
+        //Create Task List Submit and Cancel buttons
         const taskButtonContainer = document.createElement('div');
         taskButtonContainer.classList.add('task-button-container');
         taskModalContainer.append(taskButtonContainer);
