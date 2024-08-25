@@ -263,6 +263,9 @@ class TodolooApp {
         taskModalForm.appendChild(document.createElement('br'));
 
         // Task Priority Input
+        const taskPriorityContainer = document.createElement('div');
+        taskPriorityContainer.classList.add('task-priority-container');
+
         const taskPriorityLabel = document.createElement('label');
         taskPriorityLabel.setAttribute('for', 'priority');
         taskPriorityLabel.textContent = 'Priority Level: ';
@@ -282,12 +285,17 @@ class TodolooApp {
         highPriority.textContent = 'High';
         taskPriorityInput.appendChild(highPriority);
 
-        taskModalForm.appendChild(taskPriorityLabel);
-        taskPriorityLabel.appendChild(taskPriorityInput);
+        taskModalForm.appendChild(taskPriorityContainer);
+        taskPriorityContainer.appendChild(taskPriorityLabel);
+        taskPriorityContainer.appendChild(taskPriorityInput);
+
         taskModalForm.appendChild(document.createElement('br'));
         taskModalForm.appendChild(document.createElement('br'));
 
         // Task due date input
+        const taskDateContainer = document.createElement('div');
+        taskDateContainer.classList.add('task-date-container');
+        
         const taskDateLabel = document.createElement('label');
         taskDateLabel.setAttribute('for', 'date');
         taskDateLabel.textContent = 'Due Date: '
@@ -298,8 +306,9 @@ class TodolooApp {
         taskDateInput.setAttribute('name', 'date');
         taskDateInput.classList.add('task-date-input');
 
-        taskModalForm.appendChild(taskDateLabel);
-        taskDateLabel.appendChild(taskDateInput);
+        taskModalForm.appendChild(taskDateContainer);
+        taskDateContainer.appendChild(taskDateLabel);
+        taskDateContainer.appendChild(taskDateInput);
 
         const taskButtonContainer = document.createElement('div');
         taskButtonContainer.classList.add('task-button-container');
