@@ -23,10 +23,11 @@ class TodolooApp {
     this.createHeader();
     this.createSidebar();
     this.createModal();
-    this.createFooter();
     this.createTaskList();
+    this.createFooter();
     this.addTaskModal();
-    this.currentProject = null;
+
+    this.setCurrentProject(this.defaultProject);
   }
 
   createHeader() {
@@ -163,12 +164,18 @@ class TodolooApp {
     projectItem.textContent = project.name;
     this.sidebarList.appendChild(projectItem);
 
+    if (this.currentProject == null) {
+      this.setCurrentProject(this.defaultProject);
+    }
+
     projectItem.addEventListener("click", () => {
       const sidebarItems = document.querySelectorAll(".sidebar-item");
       sidebarItems.forEach((item) => item.classList.remove("selected"));
       projectItem.classList.add("selected");
       this.setCurrentProject(project);
     });
+
+
   }
 
   createTaskList() {
@@ -203,7 +210,7 @@ class TodolooApp {
   }
 
   displayProjectDetails() {
-    if (!this.currentProject) return;
+    if (!this.currentProject || !this.taskListWindow) return;
 
     const projectTitle = this.taskListWindow.querySelector(".tasklist-title");
     projectTitle.textContent = this.currentProject.name;
@@ -221,9 +228,21 @@ class TodolooApp {
   setCurrentProject(project) {
     this.currentProject = project;
     this.displayProjectDetails();
+
+    const sidebarItems = document.querySelectorAll(".sidebar-item");
+    sidebarItems.forEach((item) => {
+      if (item.textContent === project.name) {
+        item.classList.add("selected");
+      }
+      else {
+        item.classList.remove("selected");
+      }
+    });
   }
 
   addTaskModal() {
+    
+
     this.taskModal = document.createElement("div");
     this.taskModal.classList.add("task-modal");
     this.content.appendChild(this.taskModal);
@@ -240,6 +259,7 @@ class TodolooApp {
     const taskModalForm = document.createElement("form");
     taskModalForm.classList.add("task-modal-form");
     taskModalContainer.appendChild(taskModalForm);
+    
 
     taskModalForm.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -266,9 +286,9 @@ class TodolooApp {
     taskModalForm.appendChild(document.createElement("br"));
 
     // Task Priority Input
+
     const taskPriorityContainer = document.createElement("div");
     taskPriorityContainer.classList.add("task-priority-container");
-
     const taskPriorityLabel = document.createElement("label");
     taskPriorityLabel.setAttribute("for", "priority");
     taskPriorityLabel.textContent = "Priority Level: ";
@@ -288,9 +308,10 @@ class TodolooApp {
     highPriority.textContent = "High";
     this.taskPriorityInput.appendChild(highPriority);
 
-    taskModalForm.appendChild(taskPriorityContainer);
     taskPriorityContainer.appendChild(taskPriorityLabel);
     taskPriorityContainer.appendChild(this.taskPriorityInput);
+    taskModalForm.appendChild(taskPriorityContainer);
+    
 
     taskModalForm.appendChild(document.createElement("br"));
     taskModalForm.appendChild(document.createElement("br"));
@@ -321,18 +342,18 @@ class TodolooApp {
     taskDetailsLabel.setAttribute("for", "date");
     taskDetailsLabel.textContent = "Description: ";
     taskDetailsLabel.classList.add("task-details-label");
-    const taskDetailsInput = document.createElement("textarea");
-    taskDetailsInput.setAttribute(
+    this.taskDetailsInput = document.createElement("textarea");
+    this.taskDetailsInput.setAttribute(
       "placeholder",
       "Enter your task description here",
     );
-    taskDetailsInput.setAttribute("id", "details");
-    taskDetailsInput.setAttribute("name", "details");
-    taskDetailsInput.classList.add("task-details-input");
+    this.taskDetailsInput.setAttribute("id", "details");
+    this.taskDetailsInput.setAttribute("name", "details");
+    this.taskDetailsInput.classList.add("task-details-input");
 
     taskModalForm.appendChild(taskDetailsContainer);
     taskDetailsContainer.appendChild(taskDetailsLabel);
-    taskDetailsContainer.appendChild(taskDetailsInput);
+    taskDetailsContainer.appendChild(this.taskDetailsInput);
 
     //Create Task List Submit and Cancel buttons
     const taskButtonContainer = document.createElement("div");
@@ -359,9 +380,15 @@ class TodolooApp {
       newTask.title = this.taskNameInput.value;
       newTask.priority = this.taskPriorityInput.value;
       newTask.dueDate = this.taskDateInput.value;
+      newTask.details = this.taskDetailsInput.value;
       newTask.project = this.currentProject.name;
 
+      this.currentProject.appendTask(newTask);
+
+      this.displayProjectDetails();
+
       console.log(newTask);
+      this.taskModal.style.display = "none";
     });
   }
 }
