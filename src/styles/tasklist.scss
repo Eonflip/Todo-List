@@ -12,7 +12,6 @@
     z-index: 0;
 }
 
-
 .task-modal {
     display: none;
     position: fixed;
@@ -83,7 +82,7 @@
     margin-bottom: 10px;
 }
 
-.task-priority {
+.task-priority-input {
     padding: 3px;
     margin-left: 50px;
 }
@@ -160,4 +159,29 @@
     background-color: lightblue;
     margin-top: 40px;
     z-index: 0;
+}
+
+.task-item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.task-name, .task-priority, .task-due-date {
+    flex: 1;
+    padding: 5px;
+    margin: 0 5px;
+  }
+
+.task-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-left: 250px;
 }
