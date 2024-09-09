@@ -219,9 +219,25 @@ class TodolooApp {
     taskList.innerHTML = "";
 
     this.currentProject.tasklist.forEach((task) => {
-      const taskItem = document.createElement("li");
-      taskItem.textContent = task.title;
-      taskList.appendChild(taskItem);
+      const taskItemContainer = document.createElement('div');
+      taskItemContainer.classList.add('task-item-container');
+
+      const taskItemName = document.createElement('div');
+      taskItemName.textContent = task.title;
+      taskItemName.classList.add('task-name');
+
+      const taskPriority = document.createElement('div');
+      taskPriority.textContent = task.priority;
+      taskPriority.classList.add('task-priority');
+
+      const taskDueDate = document.createElement('div');
+      taskDueDate.textContent = task.dueDate;
+      taskDueDate.classList.add('task-due-date');
+
+      taskItemContainer.appendChild(taskItemName);
+      taskItemContainer.appendChild(taskPriority);
+      taskItemContainer.appendChild(taskDueDate);
+      taskList.appendChild(taskItemContainer);
     });
   }
 
@@ -294,7 +310,7 @@ class TodolooApp {
     taskPriorityLabel.textContent = "Priority Level: ";
     taskPriorityLabel.classList.add("task-priority-label");
     this.taskPriorityInput = document.createElement("select");
-    this.taskPriorityInput.classList.add("task-priority");
+    this.taskPriorityInput.classList.add("task-priority-input");
     this.taskPriorityInput.setAttribute("id", "priority");
     this.taskPriorityInput.setAttribute("name", "priority");
     this.taskPriorityInput.setAttribute("placeholder", "Low");
