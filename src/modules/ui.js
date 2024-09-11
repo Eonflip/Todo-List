@@ -222,6 +222,10 @@ class TodolooApp {
       const taskItemContainer = document.createElement('div');
       taskItemContainer.classList.add('task-item-container');
 
+      const taskCheck = document.createElement('input');
+      taskCheck.type = 'checkbox';
+      taskItemContainer.appendChild(taskCheck);
+
       const taskItemName = document.createElement('div');
       taskItemName.textContent = task.title;
       taskItemName.classList.add('task-name');
@@ -230,12 +234,17 @@ class TodolooApp {
       taskPriority.textContent = task.priority;
       taskPriority.classList.add('task-priority');
 
+      const taskDetails = document.createElement('button');
+      taskDetails.textContent = 'Details';
+      taskDetails.classList.add('task-details');
+
       const taskDueDate = document.createElement('div');
       taskDueDate.textContent = task.dueDate;
       taskDueDate.classList.add('task-due-date');
 
       taskItemContainer.appendChild(taskItemName);
       taskItemContainer.appendChild(taskPriority);
+      taskItemContainer.appendChild(taskDetails);
       taskItemContainer.appendChild(taskDueDate);
       taskList.appendChild(taskItemContainer);
     });
