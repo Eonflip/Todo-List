@@ -164,17 +164,18 @@
 .task-item-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin-top: 10px;
     margin-bottom: 10px;
     width: 100%;
+    padding: 0px 10px;
+    background-color: tan;
 }
 
 .task-name, .task-priority, .task-due-date {
-    flex: 1;
     padding: 5px;
-    margin: 0 5px;
+    margin: 0px 5px;
   }
 
 .task-list {
@@ -183,5 +184,4 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    margin-left: 250px;
 }
