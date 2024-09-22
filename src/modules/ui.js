@@ -6,11 +6,11 @@ import "../Styles/main.scss";
 class TodolooApp {
   constructor() {
     this.header = document.getElementById("header");
-    this.content = document.getElementById("content");
+    this.content = document.getElementById("tasklist-content");
     this.sidebar = document.getElementById("sidebar");
     this.main = document.getElementById("main");
     this.footer = document.getElementById("footer");
-    this.pageWrapper = document.getElementById("page-wrapper");
+    this.pageWrapper = document.getElementById("tasklist-content");
     this.projectList = new ProjectList();
     this.modal = null;
     this.sidebarList = null;
