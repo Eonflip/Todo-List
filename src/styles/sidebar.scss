@@ -1,60 +1,45 @@
 
 
 .sidebar {
-    height: calc(100% - 8%);
-    width: 260px;
-    position: fixed;
-    z-index: 1;
-    top: 5%;
-    left: 0;
-    background-color: rgb(135, 134, 209);
-    overflow-x: hidden;
-    padding-top: 20px;
+    width: 250px;
+    background-color: white;
+    border-right: 1px solid black;
+    padding: 1rem;
+    height: calc(100vh - 130px);
 }
 
 .sidebarTitle {
-    text-align: center;
-    margin-top: 12px;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
 }
 
 .sidebar-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    list-style-type: none;
 }
 
 .sidebar-item {
-    margin: 2px 0px;
-    list-style: none;
-    padding: 5px 0;
-    gap: 5px;
-    text-align: center;
-    border-radius: 5px;
-    width: 80%;
-    font-weight: bold;
-
-    &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
+    &:hover, &.selected {
+      background-color: rgba(black, 0.1);
     }
 }
 
 
 .add-project {
-    margin-left: 15px;
-    margin-top: 10px;
-    padding: 5px 0;
-    gap: 5px;
-    text-align: center;
-    border-radius: 5px;
-    width: 80%;
-    background: none;
+    display: block;
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 1rem;
+    background-color: lightblue;
+    color: white;
     border: none;
-    font-weight: bold;
-
+    cursor: pointer;
+    transition: background-color 0.3s;
+  
     &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
-        cursor: pointer;
+      background-color: darken(darkblue, 10%);
     }
 }
