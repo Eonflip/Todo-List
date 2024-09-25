@@ -27,7 +27,7 @@ class TodolooApp {
     this.createFooter();
     this.addTaskModal();
 
-    this.setCurrentProject(this.defaultProject);
+    this.setCurrentProject(this.inboxProject);
   }
 
   createHeader() {
@@ -136,17 +136,38 @@ class TodolooApp {
   }
 
   createSidebar() {
+    /*
     const sidebarTitle = document.createElement("h1");
     sidebarTitle.classList.add("sidebarTitle");
     sidebarTitle.textContent = "Projects";
     this.sidebar.appendChild(sidebarTitle);
+    */
 
     this.sidebarList = document.createElement("ul");
     this.sidebarList.classList.add("sidebar-list");
     this.sidebar.appendChild(this.sidebarList);
 
-    this.defaultProject = new Project("Default");
-    this.addProjectToSidebar(this.defaultProject);
+    this.inboxProject = new Project("Inbox");
+    this.addProjectToSidebar(this.inboxProject);
+
+    this.todayProject = new Project("Today");
+    this.addProjectToSidebar(this.todayProject);
+
+    this.weekProject = new Project("Week");
+    this.addProjectToSidebar(this.weekProject);
+
+    this.projectSeperator = document.createElement('hr');
+    this.projectSeperator.classList.add('project-seperator');
+    this.sidebar.appendChild(this.projectSeperator);
+
+    this.projectSection = document.createElement('h1');
+    this.projectSection.textContent = 'Projects';
+    this.projectSection.classList.add('project-section');
+    this.sidebar.appendChild(this.projectSection);
+
+    this.customProjectList = document.createElement('ul');
+    this.customProjectList.classList.add('custom-project-list');
+    this.sidebar.appendChild(this.customProjectList);
 
     const addProject = document.createElement("button");
     addProject.classList.add("add-project");
@@ -162,11 +183,30 @@ class TodolooApp {
     const projectItem = document.createElement("li");
     projectItem.classList.add("sidebar-item");
     projectItem.textContent = project.name;
-    this.sidebarList.appendChild(projectItem);
+
+    if (project == this.inboxProject) {
+      projectItem.textContent = '📨 Inbox';
+      this.sidebarList.appendChild(projectItem);
+    }
+    else if (project == this.todayProject) {
+      projectItem.textContent = '📅 Today';
+      this.sidebarList.appendChild(projectItem);
+    }
+    else if (project == this.weekProject) {
+      projectItem.textContent = '📅 Week';
+      this.sidebarList.appendChild(projectItem);
+    }
+    else {
+      this.customProjectList.appendChild(projectItem);
+    }
+
+    
 
     if (this.currentProject == null) {
-      this.setCurrentProject(this.defaultProject);
+      this.setCurrentProject(this.inboxProject);
     }
+
+    
 
     projectItem.addEventListener("click", () => {
       const sidebarItems = document.querySelectorAll(".sidebar-item");
@@ -256,7 +296,7 @@ class TodolooApp {
 
     const sidebarItems = document.querySelectorAll(".sidebar-item");
     sidebarItems.forEach((item) => {
-      if (item.textContent === project.name) {
+      if (item.textContent.includes(project.name)) {
         item.classList.add("selected");
       }
       else {
