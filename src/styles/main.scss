@@ -37,15 +37,10 @@ main {
 
 
 .selected {
-    margin: 10px 0px;
     list-style: none;
-    padding: 5px 0;
-    gap: 5px;
-    text-align: center;
-    border-radius: 5px;
-    width: 80%;
     background-color: rgba(0, 0, 0, 0.1);
     font-weight: bold;
+    border-radius: 10px;
 }
 
 
