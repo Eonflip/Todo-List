@@ -20,15 +20,30 @@ class TodolooApp {
   }
 
   init() {
-    this.createHeader();
-    this.createSidebar();
-    this.createModal();
-    this.createTaskList();
-    this.createFooter();
-    this.addTaskModal();
+    document.addEventListener('DOMContentLoaded', () => {
+      this.createDOMElements();
+      this.createHeader();
+      this.createSidebar();
+      this.createModal();
+      this.createTaskList();
+      this.createFooter();
+      this.addTaskModal();
 
-    this.setCurrentProject(this.inboxProject);
+      if (this.currentProject === null && this.projectList.projects.length > 0) {
+        this.setCurrentProject(this.projectList.projects[0]);
+      }
+    });
   }
+
+  createDOMElements() {
+    this.header = document.getElementById("header");
+    this.content = document.getElementById("tasklist-content");
+    this.sidebar = document.getElementById("sidebar");
+    this.main = document.getElementById("main");
+    this.footer = document.getElementById("footer");
+    this.pageWrapper = document.getElementById("tasklist-content");
+  }
+
 
   createHeader() {
     const menuButton = document.createElement("button");
@@ -177,12 +192,21 @@ class TodolooApp {
     addProject.addEventListener("click", () => {
       this.modal.style.display = "block";
     });
+
+    this.projectList.projects.forEach(project => {
+      this.addProjectToSidebar(project);
+    });
   }
 
   addProjectToSidebar(project) {
+    if (!this.sidebarList) {
+      console.error('Sidebar list is not initialized');
+      return;
+    }
     const projectItem = document.createElement("li");
     projectItem.classList.add("sidebar-item");
     projectItem.textContent = project.name;
+    projectItem.localStorage = project;
 
     if (project == this.inboxProject) {
       projectItem.textContent = '📨 Inbox';
@@ -259,20 +283,24 @@ class TodolooApp {
     taskList.innerHTML = "";
 
     this.currentProject.tasklist.forEach((task) => {
-      const taskItemContainer = document.createElement('div');
-      taskItemContainer.classList.add('task-item-container');
+
+      const taskContainer = document.createElement('div');
+      taskContainer.classList.add('task-container');
+
+      const taskNameContainer = document.createElement('div');
+      taskNameContainer.classList.add('task-name-checkbox-container');
+
+      const taskDetailsContainer = document.createElement('div');
+      taskDetailsContainer.classList.add('task-details-date-container');
 
       const taskCheck = document.createElement('input');
       taskCheck.type = 'checkbox';
-      taskItemContainer.appendChild(taskCheck);
+      taskCheck.classList.add('task-checkbox');
+      
 
       const taskItemName = document.createElement('div');
       taskItemName.textContent = task.title;
       taskItemName.classList.add('task-name');
-
-      const taskPriority = document.createElement('div');
-      taskPriority.textContent = task.priority;
-      taskPriority.classList.add('task-priority');
 
       const taskDetails = document.createElement('button');
       taskDetails.textContent = 'Details';
@@ -282,11 +310,13 @@ class TodolooApp {
       taskDueDate.textContent = task.dueDate;
       taskDueDate.classList.add('task-due-date');
 
-      taskItemContainer.appendChild(taskItemName);
-      taskItemContainer.appendChild(taskPriority);
-      taskItemContainer.appendChild(taskDetails);
-      taskItemContainer.appendChild(taskDueDate);
-      taskList.appendChild(taskItemContainer);
+      taskNameContainer.appendChild(taskCheck);
+      taskNameContainer.appendChild(taskItemName);
+      taskDetailsContainer.appendChild(taskDetails);
+      taskDetailsContainer.appendChild(taskDueDate);
+      taskList.appendChild(taskContainer);
+      taskContainer.appendChild(taskNameContainer);
+      taskContainer.appendChild(taskDetailsContainer);
     });
   }
 
@@ -451,6 +481,7 @@ class TodolooApp {
       this.currentProject.appendTask(newTask);
 
       this.displayProjectDetails();
+      this.saveToLocalStorage();
 
       console.log(newTask);
       this.taskModal.style.display = "none";
